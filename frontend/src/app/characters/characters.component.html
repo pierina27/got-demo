@@ -1,0 +1,11 @@
+<mat-nav-list>
+   <mat-list-item *ngFor="let character of characters">
+      <h4>Personaje: {{ character.name }}</h4>
+      <button mat-icon-button (click)="goDetail(character._id)" class="button-delete">
+         <i class="material-icons">info</i>
+      </button>
+   </mat-list-item>
+</mat-nav-list>
+
+<mat-paginator *ngIf="characters?.length > 0" [length]="length" [pageSize]="pageSize" (page)="getCharacters($event)">
+</mat-paginator>

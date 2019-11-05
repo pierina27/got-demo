@@ -1,0 +1,31 @@
+<mat-card class="card">
+   <mat-card-header>
+     <mat-card-title>{{ character?.name }}</mat-card-title>
+     <mat-card-subtitle>Slug: {{ character?.slug ? character.slug : "N/A" }}</mat-card-subtitle>
+     <mat-card-subtitle>Sexo: {{ character?.gender ? character.gender : "N/A" }}</mat-card-subtitle>
+     <mat-card-subtitle>Rango: {{ character?.rank && character.rank.rank  ? character.rank.rank : "N/A" }}</mat-card-subtitle>
+     <mat-card-subtitle>Casa: {{ character?.home ? character.home : "N/A" }}</mat-card-subtitle>
+   </mat-card-header>
+   <div *ngIf='character?.image'>
+      <img mat-card-image src="{{character.image}}" alt="Foto del personaje">
+   </div>
+   
+   <mat-card-content>
+     <div *ngIf='character?.books && character?.books?.length > 0'>
+        <h4> Libros: </h4>
+        <mat-list-item *ngFor="let book of character?.books">
+         <div> {{ book }} </div>
+      </mat-list-item>
+     </div>
+     
+     <div *ngIf='character?.titles && character.titles?.length > 0'>
+      <h4> Títulos: </h4>
+     <mat-list-item *ngFor="let title of character.titles">
+      <div> {{ title }} </div>
+   </mat-list-item>
+  </div>
+   </mat-card-content>
+   <mat-card-actions>
+     <button mat-button routerLink="/">Regresar</button>
+   </mat-card-actions>
+ </mat-card>
